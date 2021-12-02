@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect } from 'react';
 import PokemonList from '../../components/PokemonList/PokemonList';
 import {
@@ -18,17 +19,14 @@ export default function Compendium() {
   const [selectedType, setSelectedType] = useState('all');
 
   //TODO 😖 help!
-  if (pokemons.count === 0) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-      async function getPokemon() {
-        const pokemonList = await fetchPokemon();
-        setPokemons(pokemonList);
-        setLoading(false);
-      }
-      getPokemon();
-    }, []);
-  }
+  useEffect(() => {
+    async function getPokemon() {
+      const pokemonList = await fetchPokemon();
+      setPokemons(pokemonList);
+      setLoading(false);
+    }
+    getPokemon();
+  }, []);
 
   //TODO 😖 help!
   useEffect(() => {
